@@ -17,7 +17,7 @@ class Board extends Component {
   //Randomizing whether the cell will be Lit or Not
   randomStatus() {
 
-   return Math.random() < 0.25 ? 'F' : 'T'
+   return Math.random() < 0.75 ? 'F' : 'T'
 
   } 
 
@@ -32,7 +32,6 @@ class Board extends Component {
       
     }
 
-    console.log(board)
     return board
   }
 
@@ -45,6 +44,7 @@ class Board extends Component {
       } else {
         Board[row][col] = 'F'
       }
+      
       return Board
     }
 
@@ -71,17 +71,18 @@ class Board extends Component {
 
     this.setState({gameBoard: Board})
 
+    this.checkWin()
   }
 
   checkWin() {
-    if (this.gameBoard.includes('T')) {return}
+    if (this.state.gameBoard.includes('T')) {return}
     else {
       this.setState({gameStatus: "win"})
     }
   }
 
   render() {
-
+    
     return (
       <div className="Board">
         {this.state.gameStatus==="win" ? 
