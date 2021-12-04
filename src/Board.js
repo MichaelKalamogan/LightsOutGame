@@ -75,10 +75,17 @@ class Board extends Component {
   }
 
   checkWin() {
-    if (this.state.gameBoard.includes('T')) {return}
-    else {
-      this.setState({gameStatus: "win"})
+    console.log(this.state.gameBoard)
+    
+    for (let i=0; i< this.state.gameBoard.length; i++) {
+      for(let j=0; j < this.state.gameBoard[i].length; j++) {
+        if (this.state.gameBoard[i][j] === 'T') {
+          return
+        }
+      }
     }
+      this.setState({gameStatus: "win"})
+    
   }
 
   render() {
