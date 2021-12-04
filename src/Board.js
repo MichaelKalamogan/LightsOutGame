@@ -36,7 +36,7 @@ class Board extends Component {
   }
 
   updateBoard (row, col) {
-    console.log(row,col)
+
     function changeStatus (Board, row, col) {
       if(Board[row][col] === 'F') {
         Board[row][col] = 'T'
@@ -49,6 +49,7 @@ class Board extends Component {
     }
 
     let Board = this.state.gameBoard
+
     changeStatus(Board, row, col)
 
     if(row !== 4 && row !== 0) {
@@ -69,13 +70,12 @@ class Board extends Component {
       changeStatus(Board,row, col-1)
     } 
 
-    this.setState({gameBoard: Board})
-
-    this.checkWin()
+    this.setState(
+      {gameBoard: Board}, 
+      () => {this.checkWin()})
   }
 
   checkWin() {
-    console.log(this.state.gameBoard)
     
     for (let i=0; i< this.state.gameBoard.length; i++) {
       for(let j=0; j < this.state.gameBoard[i].length; j++) {
@@ -84,7 +84,7 @@ class Board extends Component {
         }
       }
     }
-      this.setState({gameStatus: "win"})
+    this.setState({gameStatus: "win"})
     
   }
 
@@ -103,7 +103,7 @@ class Board extends Component {
                 {this.state.gameBoard.map((row,i) => (
                   <tr key={i}>
                     {row.map((col,j) => (
-                      <td key={j} onClick={() => this.updateBoard(i,j)}><Cell cellStatus={this.state.gameBoard[i][j]} /></td>
+                      <td key={j} onClick={() => (this.updateBoard(i,j))}><Cell cellStatus={this.state.gameBoard[i][j]} /></td>
                     ))}
                   </tr>
                 ))}        
