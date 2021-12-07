@@ -9,3 +9,31 @@
   width: 80px;
   background-color: white;
 }
+
+@media (max-width: 800px) {
+  .Cell {
+    height: 60px;
+    width: 60px;
+    background-color: darkgray;
+  }
+  
+  .Cell-lit {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+  }
+}
+
+@media (max-width: 500px) {
+  .Cell {
+    height: 50px;
+    width: 50px;
+    background-color: darkgray;
+  }
+  
+  .Cell-lit {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+  }
+}
